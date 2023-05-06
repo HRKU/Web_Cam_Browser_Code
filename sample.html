@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Camera Example</title>
+        <style>
+            /* CSS code here */
+            #camera {
+                width: 640px;
+                height: 480px;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <video id="camera" autoplay></video>
+        <script>
+            const video = document.getElementById("camera");
+
+            // Get user's permission to access the camera
+            navigator.mediaDevices
+                .getUserMedia({ video: true })
+                .then((stream) => {
+                    // Display camera feed in video element
+                    video.srcObject = stream;
+                })
+                .catch((error) => {
+                    console.error("Error accessing camera:", error);
+                });
+        </script>
+    </body>
+</html>
